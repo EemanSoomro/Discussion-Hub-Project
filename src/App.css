@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+/* App.css */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color: #020202;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+}

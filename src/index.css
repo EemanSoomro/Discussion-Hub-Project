@@ -1,13 +1,12 @@
+/* App.css */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font to the whole body */
+  color: white;
+  background-color: #020202;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* If you have other elements you want to style, add them here */
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
 }
+

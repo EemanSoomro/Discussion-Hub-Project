@@ -4,11 +4,11 @@ import './Home.css'; // For styling (optional)
 const Home = () => {
     // Sample data for societies, FYPs, and discussion forums
     const societies = [
-        { name: "Society 1", image: "/images/societies/art.png" },
-        { name: "Society 2", image: "/images/societies/music.png" },
-        { name: "Society 3", image: "/images/societies/IEEE.png" },
-        { name: "Society 4", image: "/images/societies/Sport.png" },
-        { name: "Society 5", image: "/images/societies/Welfare.png" }
+        { image: "/images/societies/Art.png", name: "Art Society" },
+        { image: "/images/societies/music.png", name: "Music Society" },
+        { image: "/images/societies/IEEE.png", name: "IEEE Society" },
+        { image: "/images/societies/Sport.png", name: "Sports Society" },
+        { image: "/images/societies/marketing.png", name: "Marketing Society" },
     ];
     const fyps = ["FYP 1", "FYP 2", "FYP 3", "FYP 4", "FYP 5"];
     const discussionCategories = ["Category 1", "Category 2", "Category 3", "Category 4"];
