@@ -10,7 +10,13 @@ const Home = () => {
         { image: "/images/societies/Sport.png", name: "Sports Society" },
         { image: "/images/societies/marketing.png", name: "Marketing Society" },
     ];
-    const fyps = ["FYP 1", "FYP 2", "FYP 3", "FYP 4", "FYP 5"];
+    const fyps = [
+        { image: "/images/fyps/Android AI diet plan project.png", name: "Android AI diet plan project" },
+        { image: "/images/fyps/quran for blind.png", name: "Quran for blind" },
+        { image: "/images/fyps/Android Based Sceurity and Emergency Alert system using CCTV cameras.png", name: "Android Based Sceurity and Emergency Alert system using CCTV cameras" },
+        { image: "/images/fyps/Music Recommender System Android Application.png", name: "Music Recommender System Android Application" },
+        { image: "/images/fyps/Layout Code Generator by using AI techniques.png", name: "Layout Code Generator by using AI techniques" }
+    ];
     const discussionCategories = ["Category 1", "Category 2", "Category 3", "Category 4"];
 
     return (
@@ -40,13 +46,17 @@ const Home = () => {
                     ))}
                 </div>
             </section>
+            
             <section className="fyp">
-                <h2>FYP Submissions</h2>
-                <ul>
+                <h2>Final Year Projects</h2>
+                <div className="fyp-container">
                     {fyps.map((fyp, index) => (
-                        <li key={index}>{fyp}</li>
+                        <div className="fyp-item" key={index}>
+                            <img src={fyp.image} alt={fyp.name} className="fyp-img" />
+                            <h3>{fyp.name}</h3>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </section>
             <section className="discussion-forum">
                 <h2>Discussion Forum Categories</h2>
