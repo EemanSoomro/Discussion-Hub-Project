@@ -194,7 +194,7 @@ ul {
     background-color: #3883c5;
 }
 .fyp {
-    margin-top: -40px;
+    margin-top: -5x;
     
     padding: 20px;
     background-color: #020202;
@@ -255,8 +255,9 @@ ul {
     transform: translateY(0);
 }
 .discussion-forum {
+    margin-top: -15px;
     
-    margin: 20px 0;
+    
     padding: 20px;
     background-color: #020202;
     border-radius: 8px;
@@ -316,8 +317,11 @@ ul {
 .discussion-category:hover h3 {
     transform: translateY(0);
 }
+.announcements {
+    margin-top: -20px;
+}
 .announcements p {
-    font-family: 'Roboto', sans-serif; /* Change to your preferred font */
+    font-family: 'Open Sans', sans-serif;/* Change to your preferred font */
     text-align: center; /* Center-align the text */
     color: #ffffff; /* Optional: Set text color */
     margin-top: 10px; /* Optional: Add space above the paragraph */
