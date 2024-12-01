@@ -1,0 +1,173 @@
+/* Banner Section */
+.hero-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Search Bar Section */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-section input {
+  padding: 10px;
+  width: 80%;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Societies Grid Section */
+.societies-grid {
+  margin: 20px 0;
+}
+
+.societies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.society-card {
+  width: 22%;
+  
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.society-card:hover {
+  transform: scale(1.05);
+}
+
+.society-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Overlay section with description on top */
+.image-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark background for description */
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+  
+}
+
+.society-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Name overlay at the bottom with dark background */
+.name-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background for name */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 2;
+}
+
+.society-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Remove Join Now button */
+.society-card button {
+  display: none;
+}
+
+/* Pagination Section */
+.pagination-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 45px;
+  text-align: center;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .society-card {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .society-card {
+    width: 100%;
+  }
+
+  .search-section input {
+    width: 90%;
+  }
+}

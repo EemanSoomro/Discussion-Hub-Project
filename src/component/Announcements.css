@@ -1,0 +1,83 @@
+/* Announcements container styling */
+.announcements-container {
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column; /* Display content in columns */
+  gap: 20px; /* Space between each announcement */
+}
+
+/* Announcement title styling */
+.announcements-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Announcement card styling */
+.announcement-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.announcement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-subject {
+  font-size: 1.8rem;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.announcement-type {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.announcement-body {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 15px;
+}
+
+.announcement-date {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .announcements-container {
+    padding: 20px;
+  }
+
+  .announcements-title {
+    font-size: 2rem;
+  }
+
+  .announcement-subject {
+    font-size: 1.5rem;
+  }
+
+  .announcement-body {
+    font-size: 1.1rem;
+  }
+}

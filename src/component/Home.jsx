@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
+
 import Login from './Login';
 import './Home.css';
 
@@ -64,16 +65,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <nav className="navbar">
-        <h2>General Hub</h2>
-        <ul>
-          <li>Home</li>
-          <li>Societies</li>
-          <li>FYP</li>
-          <li>Discussion Forum</li>
-          <li>Announcements</li>
-        </ul>
-      </nav>
+     
       <header className="home-header">
         <h1>Welcome to General Hub</h1>
         <p>Your one-stop destination for all discussions, announcements, and more!</p>

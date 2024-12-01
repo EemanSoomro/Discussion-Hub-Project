@@ -5,8 +5,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-
-const Login = () => {
+const Login = ({ onLogin }) => {  // Accept onLogin function as a prop
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,6 +18,7 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             console.log('Login successful');
+            onLogin();  // Call onLogin to update the logged-in state in App.js
             navigate('/'); // Navigate to Home after successful login
         } catch (error) {
             setError('Invalid email or password');
@@ -31,6 +31,7 @@ const Login = () => {
         try {
             await signInWithPopup(auth, googleProvider);
             console.log('Google login successful');
+            onLogin();  // Call onLogin to update the logged-in state in App.js
             navigate('/'); // Navigate to Home after successful login
         } catch (error) {
             setError('Google login failed');
