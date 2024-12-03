@@ -4,6 +4,7 @@ import Home from './component/Home';
 import Login from './component/Login';
 import Footer from './component/Footer';
 import Societies from './component/Societies';
+import SocietyDetails from "./component/SocietyDetails";
 import Project from './component/Project';
 import Discussion from './component/Discussion';
 import Announcements from './component/Announcements';
@@ -29,6 +30,7 @@ function AppContent() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/societies" element={<Societies />} />
+                <Route path="/societies/:id" element={<SocietyDetails />} />
                 <Route path="/project" element={<Project/>} />
                 <Route path="/discussion" element={<Discussion />} />
                 <Route path="/announcements" element={<Announcements />} />

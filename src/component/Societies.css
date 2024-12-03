@@ -1,4 +1,3 @@
-/* Banner Section */
 .hero-banner {
   position: relative;
   background-size: cover;
@@ -9,10 +8,21 @@
   align-items: center;
   justify-content: center;
 }
+.hero-banner .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%); /* Darkens the background image */
+}
 
 .hero-text {
   text-align: center;
   z-index: 1;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .hero-banner .overlay {
@@ -21,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 0;
 }
 
@@ -138,7 +148,7 @@
   margin: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #1e1e2a;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 45px;
