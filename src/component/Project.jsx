@@ -64,20 +64,23 @@ const Projects = () => {
 
       {/* Search & Filters */}
       <div className="search-filters">
-        <div className="row">
+        {/* Search Bar */}
+        <div className="row-full-width">
           <input
             type="text"
-            placeholder="Search by title, keyword, or student name..."
+            placeholder="Quick Search.."
             value={search}
             onChange={handleSearch}
           />
+        </div>
+
+        {/* Filters */}
+        <div className="row">
           <select name="year" onChange={handleFilterChange}>
             <option value="">Year</option>
             <option value="2023">2023</option>
             <option value="2024">2024</option>
           </select>
-        </div>
-        <div className="row">
           <select name="department" onChange={handleFilterChange}>
             <option value="">Department</option>
             <option value="CS">CS</option>

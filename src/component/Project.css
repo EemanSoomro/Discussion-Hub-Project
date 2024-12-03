@@ -1,19 +1,48 @@
-/* Search Bar Section */
+/* Search Filters Section */
 .search-filters {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   margin: 20px 0;
+  padding: 0 20px; /* Empty space on the sides */
 }
 
 .search-filters .row {
   display: flex;
   gap: 10px;
   justify-content: center;
+  width: 100%;
 }
 
-.search-filters input,
+.search-filters .row.full-width {
+  justify-content: space-between;
+}
+
+.search-filters input {
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.row-full-width {
+  width: 100%; /* Ensures the row takes full width */
+  display: flex; /* For proper alignment */
+  justify-content: center; /* Centers the search bar */
+  margin: 20px 0; /* Adds space above and below */
+}
+
+.row-full-width input {
+  width: 60%; /* Adjust width as needed */
+  max-width: 1200px; /* Adds a limit for larger screens */
+  padding: 12px; /* Adds padding inside the input */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+
 .search-filters select {
   padding: 10px;
   width: 220px;
@@ -21,6 +50,21 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .search-filters .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-filters input,
+  .search-filters select {
+    width: 100%;
+  }
+}
+
+/* Other existing CSS remains the same */
 
 /* Project Cards Grid */
 .projects-grid {
