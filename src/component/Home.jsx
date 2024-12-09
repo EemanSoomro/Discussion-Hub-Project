@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 import Login from './Login';
 import './Home.css';
@@ -95,11 +96,11 @@ const Home = () => {
       <section className="societies">
         <h2>Societies</h2>
         <div className="society-container">
-          {shuffleArray(societies).slice(0, 5).map((society, index) => (  // Shuffle and then limit to 5 societies
-            <div className="society" key={index}>
+          {shuffleArray(societies).slice(0, 5).map((society, index) => (
+            <Link key={index} to={`/societies/${society._id}`} className="society">
               <img src={society.picture} alt={society.name} className="society-img" />
               <h3>{society.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -134,11 +135,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Announcements Section */}
-      <section className="announcements">
-        <h2>Announcements</h2>
-        <p>Stay updated with the latest news and events!</p>
-      </section>
     </div>
   );
 };

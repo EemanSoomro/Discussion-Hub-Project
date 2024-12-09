@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo-container">
-        <img src="/images/logo.png" alt="Logo" className="logo" />
+        <img src="/images/Logo.jpg" alt="Logo" className="logo" />
         <h2>Discussion Hub</h2>
       </div>
       <ul>
@@ -20,10 +20,9 @@ const Navbar = () => {
             Societies
           </NavLink>
         </li>
-        
         <li>
           <NavLink to="/discussion" className={({ isActive }) => (isActive ? 'active' : '')}>
-            Discussion Forum
+            Forum
           </NavLink>
         </li>
         <li>
@@ -34,6 +33,12 @@ const Navbar = () => {
         <li>
           <NavLink to="/project" className={({ isActive }) => (isActive ? 'active' : '')}>
             Projects
+          </NavLink>
+        </li>
+        {/* Login Link */}
+        <li>
+          <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : '')}>
+            Logout
           </NavLink>
         </li>
       </ul>

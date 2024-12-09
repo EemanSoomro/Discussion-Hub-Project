@@ -17,14 +17,15 @@
   }
   
   .logo {
-    width: 160px; /* Adjust size */
-    height: 70px;
+    width: 130px; /* Adjust size */
+    height: 50px;
     margin: 0;
     padding: 0;
   }
   .navbar h2 {
     margin-top: 10px;
-    padding-top: 10px; /* Push it downward */
+    margin-left: 6px;
+    padding-top: 7px; /* Push it downward */
   }
   
   .navbar ul {

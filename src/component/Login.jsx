@@ -1,76 +1,57 @@
-// Login.jsx
 import React, { useState } from 'react';
-import { auth, googleProvider } from '../firebase/firebase'; // Import firebase auth and Google provider
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = ({ onLogin }) => {  // Accept onLogin function as a prop
-    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-    const navigate = useNavigate(); // To navigate after login success
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-    // Handle regular login
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            console.log('Login successful');
-            onLogin();  // Call onLogin to update the logged-in state in App.js
-            navigate('/'); // Navigate to Home after successful login
-        } catch (error) {
-            setError('Invalid email or password');
-            console.error(error);
-        }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Handle Google Sign-In
-    const handleGoogleSignIn = async () => {
-        try {
-            await signInWithPopup(auth, googleProvider);
-            console.log('Google login successful');
-            onLogin();  // Call onLogin to update the logged-in state in App.js
-            navigate('/'); // Navigate to Home after successful login
-        } catch (error) {
-            setError('Google login failed');
-            console.error(error);
-        }
-    };
+    try {
+      const response = await axios.post('http://localhost:8800/api/auth/user', { email, password });
+      localStorage.setItem('token', response.data.token); // Save token in localStorage
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Something went wrong!');
+    }
+  };
 
-    return (
+  return (
+    <div className="login-container">
+      <h2>Login</h2>
+      {error && <p className="error">{error}</p>}
+      <form onSubmit={handleSubmit}>
         <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                {error && <p>{error}</p>}
-                <button type="submit">Login</button>
-            </form>
-
-            {/* Google Sign-In button */}
-            <div>
-                <button onClick={handleGoogleSignIn}>Sign in with Google</button>
-            </div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="button-group">
+          <button type="submit">Login</button>
+          {/* Register Button */}
+          <button type="button" className="register-button" onClick={() => navigate('/register')}>Register</button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default Login;

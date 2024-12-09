@@ -1,76 +1,93 @@
-/* Project Details Page */
+/* ProjectDetails.css */
+
 .project-details {
-    max-width: 900px;
-    margin: 50px auto;
-    background-color: black;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+  font-family: 'Arial', sans-serif;
+  color: white;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #444;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.header-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.header-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.header-info {
+  flex-grow: 1;
+  text-align: center;
   
-  .project-details h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
+}
+
+.header-info h1 {
+  color: #007BFF;
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
   
-  .project-details p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-  }
-  
-  .project-details .technologies {
-    margin-top: 20px;
-  }
-  
-  .project-details .technologies ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .project-details .technologies li {
-    background-color: #f1f1f1;
-    margin: 5px 0;
-    padding: 8px 15px;
-    border-radius: 5px;
-  }
-  
-  .project-details .team-members {
-    margin-top: 20px;
-  }
-  
-  .project-details .team-members ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .project-details .team-members li {
-    margin: 5px 0;
-    padding: 5px 0;
-    color: #777;
-  }
-  
-  .project-details .supervisor-comments {
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    color: #555;
-  }
-  
-  /* Back Button */
-  .project-details .back-btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .project-details .back-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+.header-info h1:hover {
+  color: #0056b3;
+}
+
+.about-section, .application-section, .technologies-section, .abstract-section, .domain-section, .status-section, .year-section , .university-section{
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #1e1e2a;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.about-section:hover, .application-section:hover, .technologies-section:hover, .abstract-section:hover, .domain-section:hover, .status-section:hover, .year-section:hover ,.university-section:hover{
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.about-section h2, .application-section h2, .technologies-section h2, .abstract-section h2, .domain-section h2, .status-section h2, .year-section h2, .university-section h2 {
+  color: #007BFF;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.about-section p, .application-section p, .technologies-section p, .abstract-section p, .domain-section p, .status-section p, .year-section p .university-section p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+.about-section ul, .application-section ul, .technologies-section ul, .abstract-section ul, .domain-section ul, .status-section ul, .year-section ul, .university-section ul {
+  padding-left: 20px;
+  color: #007BFF;
+  list-style-type: disc;
+}
+
+.about-section li, .application-section li, .technologies-section li, .abstract-section li, .domain-section li, .status-section li, .year-section li, .university-section li   {
+  margin-bottom: 15px;
+  color: #ddd;
+}

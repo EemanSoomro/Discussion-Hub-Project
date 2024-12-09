@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './Project.css';
+import "./Project.css";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -50,6 +50,11 @@ const Projects = () => {
     setCurrentPage(pageNumber);
   };
 
+  // Navigate to ProjectDetails page on project card click
+  const handleProjectClick = (id) => {
+    navigate(`/project/${id}`);
+  };
+
   return (
     <div>
       {/* Hero Banner */}
@@ -97,7 +102,7 @@ const Projects = () => {
       {/* Project Cards */}
       <div className="projects-grid">
         {currentProjects.map((project) => (
-          <div className="project-card" key={project._id}>
+          <div className="project-card" key={project._id} onClick={() => handleProjectClick(project._id)}>
             <div className="image-container">
               <img 
                 src={project.picture ? project.picture : '/fallback-image.png'} 
@@ -125,12 +130,6 @@ const Projects = () => {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <p>Contact us for project-related queries.</p>
-        <a href="/guidelines">Project Guidelines</a>
-      </footer>
     </div>
   );
 };
