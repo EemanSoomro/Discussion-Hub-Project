@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../authContext/AuthContext";
+import { AuthContext } from "../../authContext/AuthContext";
 import { useContext } from "react";
 import "./Navbar.css";
 

@@ -8,17 +8,17 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthContext } from "./authContext/AuthContext"; // Ensure AuthContext is imported
-import Home from "./component/Home";
-import Login from "./component/User/Login/Login";
 import Register from "./component/User/Register/Register";
-import Footer from "./component/Footer";
-import Societies from "./component/Societies";
-import SocietyDetails from "./component/SocietyDetails";
-import Project from "./component/Project";
-import Discussion from "./component/Discussion";
-import Announcements from "./component/Announcements";
-import Navbar from "./component/Navbar";
-import ProjectDetails from "./component/ProjectDetails"; // Import the ProjectDetails component
+import Login from "./component/User/Login/Login";
+import Discussion from "./component/Discussion/Discussion";
+import Home from "./component/Home/Home";
+import Footer from "./component/Footer/Footer";
+import Societies from "./component/Societies/Societies";
+import SocietyDetails from "./component/SocietyDetails/SocietyDetails";
+import Project from "./component/Project/Project";
+import Announcements from "./component/Announcements/Announcements";
+import Navbar from "./component/Navbar/Navbar";
+import ProjectDetails from "./component/ProjectDetails/ProjectDetails"; // Import the ProjectDetails component
 
 function App() {
   return (

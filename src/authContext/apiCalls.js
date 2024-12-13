@@ -5,7 +5,7 @@ export const loginCall = async (userCredential, dispatch) => {
   dispatch(loginStart);
   try {
     const res = await axios.post(
-      process.env.REACT_APP_API + "/auth/login",
+      "http://localhost:8800/api/auth/login",
       userCredential
     );
     dispatch(loginSuccess(res.data));
