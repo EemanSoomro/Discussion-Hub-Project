@@ -6,6 +6,8 @@ const Announcements = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [filteredAnnouncements, setFilteredAnnouncements] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [newAnnouncement, setNewAnnouncement] = useState({ subject: '', body: '' });
+  const [showForm, setShowForm] = useState(false);
 
   const categories = [
     { name: "General Announcements", image: "/images/Announcement categories/general.png" },
@@ -43,6 +45,19 @@ const Announcements = () => {
     setFilteredAnnouncements([]);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewAnnouncement({ ...newAnnouncement, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Just show an alert, without sending data
+    alert("Your announcement has been submitted and is waiting for admin approval.");
+    setNewAnnouncement({ subject: '', body: '' });
+    setShowForm(false);
+  };
+
   return (
     <div className="ann-announcements-container">
       <h1 className="ann-announcements-title">Announcements</h1>
@@ -71,6 +86,8 @@ const Announcements = () => {
           <div className="ann-popup">
             <h2>{selectedCategory}</h2>
             <button className="ann-close-button" onClick={closePopup}>Close</button>
+            
+            {/* Announcements Table */}
             <div className="ann-popup-content">
               {filteredAnnouncements.length > 0 ? (
                 <table>
@@ -98,6 +115,37 @@ const Announcements = () => {
                 </div>
               )}
             </div>
+
+            {/* Add Announcement Button */}
+            {!showForm && (
+              <button className="ann-add-button" onClick={() => setShowForm(true)}>
+                Add Announcement
+              </button>
+            )}
+
+            {/* Add Announcement Form */}
+            {showForm && (
+              <div className="ann-add-announcement">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={newAnnouncement.subject}
+                    onChange={handleInputChange}
+                    placeholder="Subject"
+                    required
+                  />
+                  <textarea
+                    name="body"
+                    value={newAnnouncement.body}
+                    onChange={handleInputChange}
+                    placeholder="Body"
+                    required
+                  ></textarea>
+                  <button type="submit" className="ann-submit-button">Submit</button>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       )}

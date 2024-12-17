@@ -6,10 +6,11 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({ year: "", department: "", status: "" });
-  const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
-  const [projectsPerPage] = useState(16); // Number of projects per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 16; // Projects per page
   const navigate = useNavigate();
 
+  // Fetch projects from API
   useEffect(() => {
     fetch("http://localhost:8800/api/projects")
       .then((res) => res.json())
@@ -17,42 +18,36 @@ const Projects = () => {
       .catch((err) => console.error("Error fetching projects:", err));
   }, []);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // Handle input changes for search and filters
+  const handleSearch = (e) => setSearch(e.target.value.trim());
+  const handleFilterChange = (e) =>
+    setFilters((prevFilters) => ({ ...prevFilters, [e.target.name]: e.target.value }));
 
-  const handleFilterChange = (e) => {
-    setFilters({ ...filters, [e.target.name]: e.target.value });
-  };
-
-  // Filter projects based on search and selected filters
+  // Filter projects based on search and filters
   const filteredProjects = projects.filter((project) => {
-    const matchesSearch = project.name.toLowerCase().includes(search.toLowerCase());
-    const matchesYear = filters.year ? project.year === filters.year : true;
-    const matchesDepartment = filters.department ? project.department === filters.department : true;
-    const matchesStatus = filters.status ? project.status === filters.status : true;
+    const matchesSearch = project.name?.toLowerCase().includes(search.toLowerCase()) || false;
+    const matchesYear = filters.year ? project.year === parseInt(filters.year, 10) : true;
+    const matchesDepartment = filters.department
+      ? project.domain?.toLowerCase() === filters.department.toLowerCase()
+      : true;
+    const matchesStatus = filters.status
+      ? project.status?.toLowerCase() === filters.status.toLowerCase()
+      : true;
 
     return matchesSearch && matchesYear && matchesDepartment && matchesStatus;
   });
 
-  // Get the index of the first and last project on the current page
+  // Pagination logic
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-
-  // Slice the filtered projects to only show the ones for the current page
   const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
-
-  // Calculate total pages
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
-  // Change the page
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Navigate to ProjectDetails page on project card click
+  // Navigate to project details
   const handleProjectClick = (id) => {
-    navigate(`/project/${id}`);
+    navigate(`/project/${id}`); // Navigate to the specific project details page
   };
 
   return (
@@ -67,9 +62,8 @@ const Projects = () => {
         <div className="overlay"></div>
       </div>
 
-      {/* Search & Filters */}
+      {/* Search and Filters */}
       <div className="search-filters">
-        {/* Search Bar */}
         <div className="row-full-width">
           <input
             type="text"
@@ -78,20 +72,20 @@ const Projects = () => {
             onChange={handleSearch}
           />
         </div>
-
-        {/* Filters */}
         <div className="row">
-          <select name="year" onChange={handleFilterChange}>
+          <select name="year" value={filters.year} onChange={handleFilterChange}>
             <option value="">Year</option>
             <option value="2023">2023</option>
             <option value="2024">2024</option>
+            <option value="2020">2020</option>
           </select>
-          <select name="department" onChange={handleFilterChange}>
+          <select name="department" value={filters.department} onChange={handleFilterChange}>
             <option value="">Department</option>
             <option value="CS">CS</option>
+            <option value="EE">EE</option>
             <option value="SE">SE</option>
           </select>
-          <select name="status" onChange={handleFilterChange}>
+          <select name="status" value={filters.status} onChange={handleFilterChange}>
             <option value="">Status</option>
             <option value="Completed">Completed</option>
             <option value="In Progress">In Progress</option>
@@ -99,37 +93,32 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Project Cards */}
+      {/* Projects Grid */}
       <div className="projects-grid">
         {currentProjects.map((project) => (
-          <div className="project-card" key={project._id} onClick={() => handleProjectClick(project._id)}>
-            <div className="image-container">
-              <img 
-                src={project.picture ? project.picture : '/fallback-image.png'} 
-                alt={project.name} 
-              />
-            </div>
-            <div className="name-overlay">
-              <h3>{project.name}</h3>
-            </div>
+          <div
+            className="project-card"
+            key={project._id}
+            onClick={() => handleProjectClick(project._id)}
+          >
+            <img src={project.picture} alt={project.name} className="project-img" />
+            <h3>{project.name}</h3>
           </div>
         ))}
       </div>
 
-      {/* Pagination Section */}
-      <section className="pagination-section">
-        <div className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => paginate(index + 1)}
-              className={currentPage === index + 1 ? "active" : ""}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-      </section>
+      {/* Pagination */}
+      <div className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            className={`page-number ${currentPage === index + 1 ? "active" : ""}`}
+            onClick={() => paginate(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

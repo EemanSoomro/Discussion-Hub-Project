@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
@@ -11,8 +11,12 @@ const Home = () => {
     const fetchSocieties = async () => {
       try {
         const response = await fetch("http://localhost:8800/api/societies"); // Your backend API
-        const data = await response.json();
-        setSocieties(data);
+        if (response.ok) {
+          const data = await response.json();
+          setSocieties(data);
+        } else {
+          console.error("Error fetching societies:", response.statusText);
+        }
       } catch (error) {
         console.error("Error fetching societies:", error);
       }
@@ -25,8 +29,12 @@ const Home = () => {
     const fetchFyps = async () => {
       try {
         const response = await fetch("http://localhost:8800/api/projects"); // Fetch FYPs from backend API
-        const data = await response.json();
-        setFyps(data);
+        if (response.ok) {
+          const data = await response.json();
+          setFyps(data);
+        } else {
+          console.error("Error fetching FYPs:", response.statusText);
+        }
       } catch (error) {
         console.error("Error fetching FYPs:", error);
       }
@@ -67,10 +75,7 @@ const Home = () => {
     <div className="home-container">
       <header className="home-header">
         <h1>Welcome to Discussion Hub</h1>
-        <p>
-          Your one-stop destination for all discussions, announcements, and
-          more!
-        </p>
+        <p>Your one-stop destination for all discussions, announcements, and more!</p>
       </header>
 
       {/* Societies Section */}
@@ -80,16 +85,8 @@ const Home = () => {
           {shuffleArray(societies)
             .slice(0, 5)
             .map((society, index) => (
-              <Link
-                key={index}
-                to={`/societies/${society._id}`}
-                className="society"
-              >
-                <img
-                  src={society.picture}
-                  alt={society.name}
-                  className="society-img"
-                />
+              <Link key={index} to={`/societies/${society._id}`} className="society">
+                <img src={society.picture} alt={society.name} className="society-img" />
                 <h3>{society.name}</h3>
               </Link>
             ))}
@@ -101,11 +98,11 @@ const Home = () => {
         <h2>Final Year Projects</h2>
         <div className="fyp-container">
           {randomFyps.length > 0 ? (
-            randomFyps.map((fyp, index) => (
-              <div className="fyp-item" key={index}>
+            randomFyps.map((fyp) => (
+              <Link key={fyp._id} to={`/project/${fyp._id}`} className="fyp-item">
                 <img src={fyp.picture} alt={fyp.name} className="fyp-img" />
                 <h3>{fyp.name}</h3>
-              </div>
+              </Link>
             ))
           ) : (
             <p>No Final Year Projects found.</p>
@@ -119,11 +116,7 @@ const Home = () => {
         <div className="discussion-categories-container">
           {discussionCategories.map((category, index) => (
             <div className="discussion-category" key={index}>
-              <img
-                src={category.image}
-                alt={category.name}
-                className="discussion-category-img"
-              />
+              <img src={category.image} alt={category.name} className="discussion-category-img" />
               <h3>{category.name}</h3>
             </div>
           ))}

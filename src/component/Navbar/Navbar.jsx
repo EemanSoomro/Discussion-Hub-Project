@@ -1,3 +1,4 @@
+// Navbar.jsx
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
@@ -15,52 +16,32 @@ const Navbar = () => {
       </div>
       <ul>
         <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/societies"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/societies" className={({ isActive }) => (isActive ? "active" : "")}>
             Societies
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/discussion"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/discussion" className={({ isActive }) => (isActive ? "active" : "")}>
             Forum
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/announcements"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/announcements" className={({ isActive }) => (isActive ? "active" : "")}>
             Announcements
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/project"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/project" className={({ isActive }) => (isActive ? "active" : "")}>
             Projects
           </NavLink>
         </li>
-        {/* Login Link */}
         <li>
-          <NavLink
-            onClick={() => {
-              dispatch({ type: "LOGOUT" });
-            }}
-          >
+          <NavLink to="/logout" className="logout" onClick={() => dispatch({ type: "LOGOUT" })}>
             Logout
           </NavLink>
         </li>
