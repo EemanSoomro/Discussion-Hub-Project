@@ -96,14 +96,18 @@ const Projects = () => {
       {/* Projects Grid */}
       <div className="projects-grid">
         {currentProjects.map((project) => (
-          <div
-            className="project-card"
-            key={project._id}
-            onClick={() => handleProjectClick(project._id)}
-          >
-            <img src={project.picture} alt={project.name} className="project-img" />
-            <h3>{project.name}</h3>
-          </div>
+         <div className="project-card" key={project._id} onClick={() => handleProjectClick(project._id)}>
+         <img src={project.picture} alt={project.name} className="project-img" />
+         <h3>{project.name}</h3>
+         <div className="hover-details">
+           <p>Year: {project.year}</p>
+           <p>Department: {project.domain}</p>
+           <p>Status: {project.status}</p>
+         </div>
+       </div>
+       
+
+          
         ))}
       </div>
 

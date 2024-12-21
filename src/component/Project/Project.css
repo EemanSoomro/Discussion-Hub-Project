@@ -105,7 +105,7 @@
 }
 
 /* Hover Content */
-.project-card .hover-details {
+ .hover-details {
   position: absolute;
   top: 0;
   left: 0;
@@ -160,6 +160,7 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-right: 90px;
 }
 
 .pagination button {
@@ -180,4 +181,19 @@
 .pagination button:hover {
   background-color: #007bff;
   color: white;
+}
+
+
+.project-card h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Light black background */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  font-size: 1.2rem;
+  border-radius: 0 0 10px 10px; /* Match card's rounded corners */
 }
