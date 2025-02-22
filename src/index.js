@@ -4,13 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals"; // Inside your index.js or App.js
 import { AuthContextProvider } from "./authContext/AuthContext";
-import { SocketProvider } from './context/SocketContext';
+import { SocketProvider } from "./context/SocketContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-    <SocketProvider>
+      <SocketProvider>
       <App />
       </SocketProvider>
     </AuthContextProvider>
